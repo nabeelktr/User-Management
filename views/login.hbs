@@ -1,15 +1,15 @@
- <div class="container-fluid vh-100" style="margin-top:200px">
-            <div class="" style="margin-top:200px">
-                <div class="rounded d-flex justify-content-center">
-                    <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-light">
-                        <div class="text-center">
-                            <h3 class="text-primary">Sign In</h3>
-                           
-                        </div>
-                        <form action="/login" method="post">
-                            <div class="p-4">
-                                
-                               <div class="form-outline mb-4">
+<div class="container-fluid " >
+    <div class="" style="margin-top:150px">
+        <div class="rounded d-flex justify-content-center">
+            <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-light">
+                <div class="text-center">
+                    <h3 class="text-primary">Sign In</h3>
+
+                </div>
+                <form action="/login" method="post">
+                    <div class="p-4">
+
+                        <div class="form-outline mb-4">
                             <label class="form-label" for="form3Example3cg"> Email</label>
                             <input type="email" name="email" class="form-control form-control-lg" />
                         </div>
@@ -17,19 +17,19 @@
                             <label class="form-label" for="form3Example3cg"> Password</label>
                             <input type="text" name="password" class="form-control form-control-lg" />
                         </div>
-                                <span><p style="margin-left: 5px; color: cornflowerblue;">{{messages.message}}</p></span>
-                                
-                               
-                                <button class="btn btn-primary text-center mt-2" type="submit">
-                                    Login
-                                </button><br><br>
-                                <a href="/signup">Don't have an account? Signup</a>
-                                
-                            </div>
-                        </form>
+                        <span>
+                            <p style="margin-left: 5px; color: cornflowerblue;">{{messages.message}}</p>
+                        </span>
+
+
+                        <button class="btn btn-primary text-center mt-2" type="submit">
+                            Login
+                        </button><br><br>
+                        <a href="/signup">Don't have an account? Signup</a>
+
                     </div>
-                </div>
+                </form>
             </div>
         </div>
-    
-    
+    </div>
+</div>

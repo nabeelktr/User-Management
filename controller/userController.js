@@ -1,27 +1,41 @@
 import asyncHandler from "express-async-handler"
 import User from "../modals/userModal"
 
-const registerUser = asyncHandler(async(req,res) => {
-    const {email,name,password} = req.body;
 
-    const user = await User.findOne({email : email})
+const registerUser = asyncHandler(async(req,res) => {
+    const {email,name,number,password} = req.body;
+
+    const ifuser = await User.findOne({email : email})
     
-    if(user){
-        req.flash('message', "user exits..")
-        res.render('/login')
+    if(ifuser){
+
+        res.render('login')
     }else{
-       const newUser = await User.create({
+       const user = await User.create({
         name,
         email,
+        number,
         password
        }) 
 
-       res.render('/profile',newUser)
+       res.render('profile',{user})
     }
+    
 })
 
 const authUser = asyncHandler(async(req,res) => {
-    res.render('./login')
+    const {email,password}=req.body
+    let user = await User.findOne({email:email})
+    if(user && (await user.matchPassword(password) )){
+       
+        
+        res.render('profile',user)
+
+    }else{
+        res.render('login')
+
+    }
+
 })
 
 export {registerUser,authUser}
