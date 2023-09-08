@@ -1,10 +1,21 @@
 import express  from "express";
-var router = express.Router()
+const router = express.Router()
+import { authUser, registerUser } from "../controller/userController.js";
 
 
 
-router.get('/',(req,res)=>{
-    res.send(' signup')
-})
+
+
+
+
+router.route('/register').post(registerUser);
+
+
+//get
+router.route('/login').get(authUser)
+router.route('/signup').get((req,res)=>{ res.render('./signup')})
+router.route('/').get((req,res)=>{ res.render('./login')})
+router.route('/profile').get((req,res) => { res.render('./profile')})
+
 
 export default router;
