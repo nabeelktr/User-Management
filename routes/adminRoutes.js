@@ -1,5 +1,5 @@
 import  express  from "express";
-import { adminPanel, authAdmin,  searchUser } from "../controller/adminController";
+import { Delete, adminPanel, authAdmin,  getUser,  searchUser, upadateUser } from "../controller/adminController";
 import { protect } from "../middleware/authMiddleware";
 var router = express.Router()
 
@@ -24,5 +24,8 @@ router.route('/logout').get((req,res)=>{
 })
 
 router.route('/searchUser').post(protect,searchUser)
+router.route('/users/:id').get(protect,getUser)
+router.route('/updateUser/:id').post(protect,upadateUser)
+router.route('/delete/:id').get(protect,Delete)
 
 export default router;
