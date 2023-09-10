@@ -8,6 +8,7 @@ import { fileURLToPath } from 'url';
 import connectDB from "./config/db.js"
 import dotenv from "dotenv"
 import { errorHandler } from "./middleware/errorHandler.js";
+import cookieParser from "cookie-parser";
 
 
 dotenv.config()
@@ -35,8 +36,19 @@ app.use((req, res, next) => {
 
 app.use(errorHandler)
 
+app.use(cookieParser())
 app.use('/', userRouter);
 app.use('/admin', adminRouter);
+
+// Define a global variable to store query parameters
+let globalQueryParams = {};
+
+// Middleware to extract and store query parameters
+app.use((req, res, next) => {
+  globalQueryParams = req.query;
+  
+  next();
+});
 
 app.listen(PORT, () => {
     console.log('Listening to PORT..'.bgGreen.bold)
