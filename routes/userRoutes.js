@@ -5,8 +5,6 @@ import { protect } from "../middleware/authMiddleware.js";
 
 
 
-
-
 router.route('/').get((req,res)=>{ 
     if(req.cookies.token){
         res.redirect('/profile')
@@ -29,8 +27,9 @@ router.route('/logout').get((req,res)=>{
     res.redirect('/')
 })
 
-
-
-
-
 export default router;
+
+
+
+
+

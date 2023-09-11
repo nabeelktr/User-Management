@@ -21,8 +21,24 @@ const authAdmin = asyncHandler(async(req,res) => {
 })
 
 const adminPanel = asyncHandler(async (req,res)=>{
-    const users = await User.find().lean()
-    res.render('adminPanel',{users : users})
+    
+   
+    if(req.query.users){
+        var users =JSON.parse(req.query.users)
+    }else{
+        var users = await User.find().lean()
+        
+    }
+    if(req.query.msg){
+        var users = []
+        var msg =req.query.msg
+    }else{
+        var msg = "";
+    }
+    res.render('adminPanel',{users : users,msg:msg})
+
+     
+
    
 })
 
@@ -32,9 +48,9 @@ const searchUser = asyncHandler(async (req,res)=>{
     
     if(users[0] != null){
     
-    res.render('adminPanel',{users :users})
+    res.redirect(`/admin/profile?users=${JSON.stringify(users)}`)
     }else{
-        res.render('adminPanel',{msg : "no user found..."})
+        res.redirect('/admin/profile?msg=user not found..')
         }
 
    

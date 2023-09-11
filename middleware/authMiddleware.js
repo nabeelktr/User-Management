@@ -12,7 +12,7 @@ const protect = asyncHandler(async (req, res, next) => {
         
         req.user = await User.findById(decoded.id).select('-password')
         
-
+        
         next()
     } catch (error) {
         console.log(error);
@@ -23,7 +23,9 @@ const protect = asyncHandler(async (req, res, next) => {
   }
 
   if (!token) {
-    
+    if(req.originalUrl.includes('/admin'))
+    return res.redirect('/admin?=invalid user')
+    else 
     return res.redirect('/?=invalid user');
     
   }

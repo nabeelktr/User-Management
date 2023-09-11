@@ -47,7 +47,7 @@
                             <td>{{number}}</td>
                             <td> <a href="#" class="btn-sm btn-primary  edit-btn" data-bs-toggle="modal" data-bs-target="#modalLoginForm"
                                     data-user-id="{{_id}}">Edit</a></td>
-                            <td><a class="btn-sm btn-primary" href="/admin/delete/{{_id}}">Delete</a></td>
+                            <td><a class="btn-sm btn-primary" href="/admin/delete/{{_id}}" onclick="return confirm('Delete User {{name}} ')">Delete</a></td>
                         </tr>
                         {{/each}}
 
